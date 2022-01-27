@@ -1,0 +1,2 @@
+﻿To run API service you should open Visual Studio and choose NotesManager in debug properties. Then press F5 to run it.
+If you want to test API service, you can use Swagger by writing http://localhost:5000/swagger/index.html in the browser.
