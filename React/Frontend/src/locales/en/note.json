@@ -1,5 +1,7 @@
 {
     "edit": "Edit",
     "save": "Save",
-    "delete": "Delete"
+    "delete": "Delete",
+    "title": "Title",
+    "text": "Some text..."
 }

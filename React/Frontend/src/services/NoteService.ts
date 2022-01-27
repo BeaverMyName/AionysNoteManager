@@ -11,6 +11,8 @@ export interface NoteService {
     delete(id: number): Promise<void>;
 }
 
+const controllerName = '/NoteBff';
+
 @injectable()
 export default class DefaultNoteService implements NoteService {
     public constructor(
@@ -19,19 +21,19 @@ export default class DefaultNoteService implements NoteService {
     }
 
     public async getNotes(): Promise<NoteDto[]> {
-        const result = await this.httpService.send<NoteDto[]>('/NoteBff/Notes', MethodType.GET);
+        const result = await this.httpService.send<NoteDto[]>(`${controllerName}/Notes`, MethodType.GET);
         return result.data;
     }
 
     public async create(text: string, title: string): Promise<void> {
-        await this.httpService.send(`/NoteBff/Create?Text=${text}&Title=${title}`, MethodType.POST);
+        await this.httpService.send(`${controllerName}/Create?Text=${text}&Title=${title}`, MethodType.POST);
     }
 
     public async update(id: number, text: string, title: string): Promise<void> {
-        await this.httpService.send(`/NoteBff/Update?Id=${id}&Text=${text}&Title=${title}`, MethodType.PUT);
+        await this.httpService.send(`${controllerName}/Update?Id=${id}&Text=${text}&Title=${title}`, MethodType.PUT);
     }
 
     public async delete(id: number): Promise<void> {
-        await this.httpService.send(`/NoteBff/Delete?Id=${id}`, MethodType.DELETE);
+        await this.httpService.send(`${controllerName}/Delete?Id=${id}`, MethodType.DELETE);
     }
 }

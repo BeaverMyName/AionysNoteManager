@@ -13,10 +13,10 @@ const ToggleLanguageButton = observer(() => {
 
     return (
         <ToggleButtonGroup
-        className='language-toggle-button'
-        value={language}
-        exclusive
-        onChange={handleChange}
+            className='language-toggle-button'
+            value={language}
+            exclusive
+            onChange={handleChange}
         >
             <ToggleButton value='en'>
                 EN
