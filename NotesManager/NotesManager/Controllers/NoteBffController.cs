@@ -37,7 +37,7 @@ namespace NotesManager.Controllers
         public async Task<IActionResult> Create(CreateNoteRequest request)
         {
             var result = await _noteService.AddAsync(request.Text, request.Title);
-            return Ok(new CreateNoteResponse<int> { Id = result });
+            return Ok(result);
         }
 
         [HttpDelete]
@@ -45,7 +45,7 @@ namespace NotesManager.Controllers
         public async Task<IActionResult> Delete(DeleteNoteRequest<int> request)
         {
             var result = await _noteService.DeleteAsync(request.Id);
-            return Ok(new DeleteNoteResponse { Success = result });
+            return Ok(result);
         }
 
         [HttpPut]
@@ -53,7 +53,7 @@ namespace NotesManager.Controllers
         public async Task<IActionResult> Update(UpdateNoteRequest<int> request)
         {
             var result = await _noteService.UpdateAsync(request.Id, request.Text, request.Title);
-            return Ok(new UpdateNoteResponse { Success = result });
+            return Ok(result);
         }
     }
 }

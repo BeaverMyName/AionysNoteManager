@@ -1,4 +1,5 @@
 ﻿using NotesManager.Models.Dtos;
+using NotesManager.Models.Responses;
 
 namespace NotesManager.Services.Interfaces
 {
@@ -6,8 +7,8 @@ namespace NotesManager.Services.Interfaces
     {
         Task<IEnumerable<NoteDto>?> GetNotesAsync();
         Task<NoteDto?> GetNoteByIdAsync(int id);
-        Task<int> AddAsync(string text, string title);
-        Task<bool> DeleteAsync(int id);
-        Task<bool> UpdateAsync(int id, string text, string title);
+        Task<CreateNoteResponse<int>> AddAsync(string text, string title);
+        Task<DeleteNoteResponse> DeleteAsync(int id);
+        Task<UpdateNoteResponse> UpdateAsync(int id, string text, string title);
     }
 }

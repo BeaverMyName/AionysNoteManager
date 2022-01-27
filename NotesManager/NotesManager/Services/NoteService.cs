@@ -2,6 +2,7 @@
 using NotesManager.Repositories.Interfaces;
 using NotesManager.Services.Interfaces;
 using AutoMapper;
+using NotesManager.Models.Responses;
 
 namespace NotesManager.Services
 {
@@ -42,19 +43,22 @@ namespace NotesManager.Services
             return result.Select(n => _mapper.Map<NoteDto>(n)).ToList();
         }
 
-        public async Task<int> AddAsync(string text, string title)
+        public async Task<CreateNoteResponse<int>> AddAsync(string text, string title)
         {
-            return await _noteRepository.AddAsync(text, title);
+            var result = await _noteRepository.AddAsync(text, title);
+            return new CreateNoteResponse<int>() { Id = result };
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<DeleteNoteResponse> DeleteAsync(int id)
         {
-            return await _noteRepository.DeleteAsync(id);
+            var result = await _noteRepository.DeleteAsync(id);
+            return new DeleteNoteResponse() { Success = result };
         }
 
-        public async Task<bool> UpdateAsync(int id, string text, string title)
+        public async Task<UpdateNoteResponse> UpdateAsync(int id, string text, string title)
         {
-            return await _noteRepository.UpdateAsync(id, text, title);
+            var result = await _noteRepository.UpdateAsync(id, text, title);
+            return new UpdateNoteResponse() { Success = result };
         }
     }
 }
